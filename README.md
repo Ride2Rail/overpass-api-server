@@ -2,6 +2,8 @@
 
 In this document can be found the characteristics of the server that runs the different dockers containing the countries and their Overpass APIs, all the steps followed for the current installation and instructions in case that the countries list is expanded.
 
+The system is based on the [`wiktorn/Overpass-API`](https://github.com/wiktorn/Overpass-API) container image.
+
 ## Server characteristics:
 
 Disk size: 500GB
