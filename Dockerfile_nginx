@@ -1,0 +1,9 @@
+FROM nginx
+
+# Create user runner
+RUN groupadd runner && \
+    useradd -g runner -s /sbin/nologin -d /home/runner -u 1050 runner && \
+    mkdir /home/runner && \
+    chown -R runner:runner /home/runner
+
+CMD nginx -g "daemon off;"
