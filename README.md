@@ -80,150 +80,150 @@ The following steps are related to the creation of the Docker network and all th
 
 ```shell
 ## Network creation
-docker network create --subnet=172.18.0.0/16 ride2railnet
+docker network create --subnet=172.18.0.0/16 overpass_network
 
 ## Pulling docker images
 docker pull nginx
-docker build -f Dockerfile_nginx -t eurecat-uds/nginx . # To run this line, make sure to be inside Dockerfile_nginx folder
+docker build -f Dockerfile_nginx -t eurecat-uds/nginx .
 
 docker pull wiktorn/overpass-api
 
 ## Container creation
 # Belgium
-docker run --net ride2railnet --ip 172.18.0.150 \
+docker run --net overpass_network --ip 172.18.0.150 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/belgium-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/belgium/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/belgium/db:/db \
-    -p 8080:80 \
+    -p 8090:80 \
     -i -t \
     --name overpass_belgium wiktorn/overpass-api
 
 # Czech Republic
-docker run --net ride2railnet --ip 172.18.0.151 \
+docker run --net overpass_network --ip 172.18.0.151 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/czech-republic-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/czech-republic/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/czech-republic/db:/db \
-    -p 8081:80 \
+    -p 8091:80 \
     -i -t \
     --name overpass_czech-republic wiktorn/overpass-api
 
 # Finland
-docker run --net ride2railnet --ip 172.18.0.152 \
+docker run --net overpass_network --ip 172.18.0.152 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/finland-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/finland/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/finland/db:/db \
-    -p 8082:80 \
+    -p 8092:80 \
     -i -t \
     --name overpass_finland wiktorn/overpass-api
 
 # France
-docker run --net ride2railnet --ip 172.18.0.153 \
+docker run --net overpass_network --ip 172.18.0.153 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/france-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/france/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/france/db:/db \
-    -p 8083:80 \
+    -p 8093:80 \
     -i -t \
     --name overpass_france wiktorn/overpass-api
 
 # Greece
-docker run --net ride2railnet --ip 172.18.0.154 \
+docker run --net overpass_network --ip 172.18.0.154 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/greece-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/greece/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/greece/db:/db \
-    -p 8084:80 \
+    -p 8094:80 \
     -i -t \
     --name overpass_greece wiktorn/overpass-api
 
 # Italy
-docker run --net ride2railnet --ip 172.18.0.155 \
+docker run --net overpass_network --ip 172.18.0.155 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/italy-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/italy/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/italy/db:/db \
-    -p 8085:80 \
+    -p 8095:80 \
     -i -t \
     --name overpass_italy wiktorn/overpass-api
 
 # Norway
-docker run --net ride2railnet --ip 172.18.0.156 \
+docker run --net overpass_network --ip 172.18.0.156 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/norway-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/norway/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/norway/db:/db \
-    -p 8086:80 \
+    -p 8096:80 \
     -i -t \
     --name overpass_norway wiktorn/overpass-api
 
 # Portugal
-docker run --net ride2railnet --ip 172.18.0.157 \
+docker run --net overpass_network --ip 172.18.0.157 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/portugal-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/portugal/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/portugal/db:/db \
-    -p 8087:80 \
+    -p 8097:80 \
     -i -t \
     --name overpass_portugal wiktorn/overpass-api
 
 # Slovakia
-docker run --net ride2railnet --ip 172.18.0.158 \
+docker run --net overpass_network --ip 172.18.0.158 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/slovakia-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/slovakia/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/slovakia/db:/db \
-    -p 8088:80 \
+    -p 8098:80 \
     -i -t \
     --name overpass_slovakia wiktorn/overpass-api
 
 # Spain
-docker run --net ride2railnet --ip 172.18.0.159 \
+docker run --net overpass_network --ip 172.18.0.159 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/spain-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/spain/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/spain/db:/db \
-    -p 8089:80 \
+    -p 8099:80 \
     -i -t \
     --name overpass_spain wiktorn/overpass-api
 
 # Switzerland
-docker run --net ride2railnet --ip 172.18.0.160 \
+docker run --net overpass_network --ip 172.18.0.160 \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/switzerland-latest.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/switzerland/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/switzerland/db:/db \
-    -p 8090:80 \
+    -p 8100:80 \
     -i -t \
     --name overpass_switzerland wiktorn/overpass-api
 
 
 # Nginx Entrypoint
-docker run --net ride2railnet --ip 172.18.0.100 \
+docker run --net overpass_network --ip 172.18.0.100 \
     --name nginx-entrypoint \
     -v /var/ride2rail/logs/nginx-entrypoint:/var/log/nginx \
     -v /etc/ride2rail/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
@@ -278,14 +278,14 @@ ctrl+a , d # detach the screen, you can close connection to server safely
 Once inside a screen, create the new docker container:
 
 ```shell
-docker run --net ride2railnet --ip 172.18.0.xxx \
+docker run --net overpass_network --ip 172.18.0.xxx \
     -e OVERPASS_META=yes \
     -e OVERPASS_MODE=init \
     -e OVERPASS_PLANET_URL=http://download.geofabrik.de/europe/<country>.osm.bz2 \
     -e OVERPASS_DIFF_URL=https://download.openstreetmap.fr/replication/europe/<country>/minute/ \
     -e OVERPASS_RULES_LOAD=10 \
     -v /var/ride2rail/overpass_api/<country>/db:/db \
-    -p 8090:80 \
+    -p <free-port>:80 \
     -i -t \
     --name overpass_<country> wiktorn/overpass-api
 ```
