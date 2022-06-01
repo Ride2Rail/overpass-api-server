@@ -30,9 +30,16 @@ The first installation includes the following countries:
 
 
 
-### Install Docker:
+### Setup:
 
-All the info relative to installing dockers, can be found in the following link: [Link to docker installation guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+Install a recent version of Docker. All the info relative to installing dockers, can be found in the following link: [Link to docker installation guide](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+
+Clone this repository and enter it.
+
+```shell
+git clone https://github.com/Ride2Rail/overpass-api-server.git
+cd overpass-api-server
+```
 
 ### Folders creation:
 
